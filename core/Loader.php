@@ -10,7 +10,7 @@ class Loader {
 
     //自动加载类
     public static function autoload($class){
-        echo "加载类名：" . $class . "<br>";
+        //echo "加载类名：" . $class . "<br>";
         $file = self::findFile($class);
         $file ? self::includeFile($file) : '类文件不存在';
     }
@@ -30,9 +30,12 @@ class Loader {
         //通过类的限定名称查找类文件地址
         $map = [
             //顶级命名空间对应的绝对路径
-            'App'   =>  '/mnt/hgfs/code/myphp/app'
+            'App'   =>  dirname(__DIR__) . '/app'
         ];
 
+        //var_dump($map);
+
+        //类文件的相对路径
         $relative_path = str_replace('\\','/',substr($class,$first_backslash_pos + 1));
 
         $class_file = $map[$top_namespace] . '/' . $relative_path . '.php';
@@ -49,6 +52,6 @@ class Loader {
      * @param $file
      */
     static function includeFile($file){
-        include $file;
+        include "$file";
     }
 }

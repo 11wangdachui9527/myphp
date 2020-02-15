@@ -8,12 +8,12 @@
 
 namespace App\Http\Controller;
 
-class TestController {
+class IndexController {
     function __construct()
     {
     }
 
-    function test(){
-        echo 'test';
+    function index(){
+        echo 'index';
     }
 }
