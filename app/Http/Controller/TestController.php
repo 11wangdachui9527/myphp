@@ -7,7 +7,7 @@
  */
 
 namespace App\Http\Controller;
-
+use App\Model\User;
 class TestController {
     function __construct()
     {
@@ -15,5 +15,10 @@ class TestController {
 
     function test(){
         echo 'test';
+    }
+
+    function users(){
+        $user = new User();
+        print_r($user->getUsers());
     }
 }
